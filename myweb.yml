@@ -12,8 +12,8 @@
     - name: Copying the war file to the destination
       copy: src=/root/myweb/myweb-0.12.0.war dest="{{ tomcat_path }}/../webapps/"
 
-    - name: ==> shutdown qle tomcat ,path = "{{ tomcat_path }}/bin"
-      command: sh {{ tomcat_path }}/bin/shutdown.sh
+    - name: ==> shutdown qle tomcat ,path = "{{ tomcat_path }}"
+      command: sh {{ tomcat_path }}/shutdown.sh
 
     - name: ==> sleep 3s
       command: sleep 3s
