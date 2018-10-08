@@ -5,15 +5,15 @@
 
   vars:
     tomcat_folder: bin
-    tomcat_path: "/root/tomcat8/{{ tomcat_folder }}"
-    grep_string: "[/]root/tomcat8/{{ tomcat_folder }}"
+    tomcat_path: "/root/tomcat8/apache-tomcat-8.5.34{{ tomcat_folder }}"
+    grep_string: "[/]root/tomcat8/apache-tomcat-8.5.34{{ tomcat_folder }}"
 
   tasks:
     - name: Copying the war file to the destination
       copy: src=/root/myweb/myweb-0.12.0.war dest="{{ tomcat_path }}/../webapps/"
 
-    - name: ==> shutdown qle tomcat ,path = "{{ tomcat_path }}/bin/"
-      command: sh {{ tomcat_path }}/shutdown.sh
+    - name: ==> shutdown qle tomcat ,path = "{{ tomcat_path }}/apache-tomcat-8.5.34./bin/"
+      command: sh {{ tomcat_path }}/apache-tomcat-8.5.34./bin/shutdown.sh
 
     - name: ==> sleep 3s
       command: sleep 3s
@@ -34,5 +34,5 @@
     - command: sleep 1s
       when: service_apache_status.stdout != ''
 
-    - name: ==> startup qle tomcat , path = {{ tomcat_path }}/bin/startup.sh
+    - name: ==> startup qle tomcat , path = {{ tomcat_path }}/apache-tomcat-8.5.34./bin/startup.sh
       shell: setsid /bin/sh -i -c "{{ tomcat_path }}/startup.sh"
